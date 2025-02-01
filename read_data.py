@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-
+import missingno as msno
 def read_data(file_name):
     data = pd.read_csv(file_name)
     return data

@@ -5,8 +5,11 @@ def copy_data(fileName):
     return copy_df
 
 def replace_na(df):
+    
     df = df.replace('Not Applicable', pd.NA)
     df = df.replace('Unknown', pd.NA)
+
+    msno.bar(df)
 
     fuel_type_map= {
         'Gasoline': 0,
@@ -19,6 +22,8 @@ def replace_na(df):
     df = df.drop('Region', axis=1)
     df.drop(columns=['Number_of_Vehicles_Registered_at_the_Same_Address'], errors='ignore', inplace=True)
 
+    #modify
+    #df['GVWR_Class'] = np.where(df['Vehicle_Category']=='p',)
     return df
 
 def rename_df(df):
