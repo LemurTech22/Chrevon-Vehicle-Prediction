@@ -18,6 +18,8 @@ def replace_na(df):
         'Natural Gas': 3,
         'Hydrogen': 4
     }
+    
+    
     df['Fuel_Type'] = df['Fuel_Type'].map(fuel_type_map)
     df = df.drop('Region', axis=1)
 
@@ -87,7 +89,31 @@ if __name__ == '__main__':
     gas_df.to_csv('gas_df.csv')
     elec_df.to_csv('elec_df.csv')
     hydro_df.to_csv('hydro_df.csv')
-    
 
+'''
+import pandas as pd
 
+# Read the CSV file
+df = pd.read_csv('your_file.csv')
 
+# Let's assume the column with vehicle types is 'vehicle_type' and the column with data is 'value_column'
+
+# You can calculate the mean for each vehicle type
+grouped_means = df.groupby('vehicle_type')['value_column'].mean()
+
+# Replace NaN values in 'value_column' with the corresponding type's mean
+def replace_with_group_mean(row):
+    if pd.isna(row['value_column']):
+        # Use the group mean for that vehicle type
+        return grouped_means[row['vehicle_type']]
+    return row['value_column']
+
+# Apply the function to the DataFrame
+df['value_column'] = df.apply(replace_with_group_mean, axis=1)
+
+# Save the modified DataFrame back to a new CSV
+df.to_csv('modified_file.csv', index=False)
+
+print("Unknown values replaced with corresponding group averages.")
+
+'''
