@@ -15,17 +15,27 @@ def replace_na(df):
         'Natural Gas': 3,
         'Hydrogen': 4
     }
-    df['Fuel Type'] = df['Fuel Type'].map(fuel_type_map)
+    df['Fuel_Type'] = df['Fuel_Type'].map(fuel_type_map)
     df = df.drop('Region', axis=1)
-    df.drop(columns=['Number of Vehicles Registered at the Same Address'], errors='ignore', inplace=True)
+    df.drop(columns=['Number_of_Vehicles_Registered_at_the_Same_Address'], errors='ignore', inplace=True)
 
-    df.to_csv('unit_Testing.csv')
+    return df
+
+def rename_df(df):
+    col = {'Vehicle Category': 'vehicle_category', 'GVWR Class': 'GVWR_Class', 'Fuel Type':  'Fuel_Type', 
+           'Model Year': 'Model_Year','Fuel Technology': 'Fuel_Technology', 'Electric Mile Range': 'Electric_Mile_Range', 
+           'Number of Vehicles Registered at the Same Address': 'Number_of_Vehicles_Registered_at_the_Same_Address', 
+           'Vehicle Population': 'Vehicle_Population'}
+    df.rename(columns=col,inplace =True)
+    print(df)
+    return df
 
 if __name__ == '__main__':
-    copy=copy_data('training.csv')
-    print(replace_na(copy))
+    copy = copy_data('training.csv')
+    copy = rename_df(copy)
+    copy = replace_na(copy)
 
-    #seperate each fuel type into gas 0 1 2 etc...
-    #plot vehicle type trends 
-    #fill missing data 
-    #plot
+    copy.info()
+
+
+
