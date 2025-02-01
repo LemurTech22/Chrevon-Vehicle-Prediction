@@ -17,6 +17,7 @@ def replace_na(df):
     }
     df['Fuel Type'] = df['Fuel Type'].map(fuel_type_map)
     df = df.drop('Region', axis=1)
+    df.drop(columns=['Number of Vehicles Registered at the Same Address'], errors='ignore', inplace=True)
 
     df.to_csv('unit_Testing.csv')
     return print('test')
