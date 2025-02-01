@@ -20,9 +20,6 @@ def replace_na(df):
     df.drop(columns=['Number of Vehicles Registered at the Same Address'], errors='ignore', inplace=True)
 
     df.to_csv('unit_Testing.csv')
-    return print('test')
-
-
 
 if __name__ == '__main__':
     copy=copy_data('training.csv')
