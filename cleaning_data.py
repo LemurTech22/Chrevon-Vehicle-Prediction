@@ -6,6 +6,8 @@ def copy_data(fileName):
 
 def replace_na(df):
     df = df.replace('Not Applicable', pd.NA)
+    df = df.replace('Unknown', pd.NA)
+
     fuel_type_map= {
         'Gasoline': 0,
         'Diesel': 1,
@@ -14,8 +16,12 @@ def replace_na(df):
         'Hydrogen': 4
     }
     df['Fuel Type'] = df['Fuel Type'].map(fuel_type_map)
-    
-    return df.apply(pd.Series.unique)
+    df = df.drop('Region', axis=1)
+
+    df.to_csv('unit_Testing.csv')
+    return print('test')
+
+
 
 if __name__ == '__main__':
     copy=copy_data('training.csv')
