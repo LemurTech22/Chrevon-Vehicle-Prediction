@@ -11,6 +11,7 @@ def replace_na(df):
 
     msno.bar(df)
     msno.heatmap(df)
+    plt.show()
     fuel_type_map= {
         'Gasoline': 0,
         'Diesel': 1,
@@ -25,26 +26,13 @@ def replace_na(df):
 
     df.drop(columns=['Number_of_Vehicles_Registered_at_the_Same_Address'], errors='ignore', inplace=True)
 
-    missing = df['Fuel_Type'].isnull().sum()
     missing_row = df[df['Fuel_Type'].isnull()]
 
     df = df.dropna(subset=['Fuel_Type'])
-
-    missing = df['Fuel_Type'].isnull().sum()
-
     print(missing_row)
-    missing_row = df[df['Fuel_Type'].isnull()]
-
-    print(f'Number of Missing fuel type: ', missing)
 
     print('Unique Values', df['vehicle_category'].unique())
     return df
-def replace_GVWR_Class(df):
-    df['GVWR_Class'] = np.where(df['vehicle_category']=='P',0,
-                                         df['GVWR_Class'])
-    
-    return df
-
 
 def rename_df(df):
     col = {'Vehicle Category': 'vehicle_category', 'GVWR Class': 'GVWR_Class', 'Fuel Type':  'Fuel_Type', 
@@ -56,7 +44,6 @@ def rename_df(df):
     return df
 
 def split_df(df):
-    unique_fuel_type = df['Fuel_Type'].unique()
 
     # Assuming Fuel_Type is mapped: Gasoline=0, Diesel=1, etc.
     gasoline_df = df[df['Fuel_Type'] == 0]
@@ -71,6 +58,10 @@ def split_df(df):
     return gasoline_df,diesel_df, electric_df, natural_gas_df,hydrogen_df
 
 
+def replace_GVWR_Class(df):
+    
+    return df
+  
 if __name__ == '__main__':
     copy = copy_data('training.csv')
     copy = rename_df(copy)
@@ -91,10 +82,6 @@ if __name__ == '__main__':
     hydro_df.to_csv('hydro_df.csv')
 
 '''
-import pandas as pd
-
-# Read the CSV file
-df = pd.read_csv('your_file.csv')
 
 # Let's assume the column with vehicle types is 'vehicle_type' and the column with data is 'value_column'
 
@@ -110,10 +97,4 @@ def replace_with_group_mean(row):
 
 # Apply the function to the DataFrame
 df['value_column'] = df.apply(replace_with_group_mean, axis=1)
-
-# Save the modified DataFrame back to a new CSV
-df.to_csv('modified_file.csv', index=False)
-
-print("Unknown values replaced with corresponding group averages.")
-
 '''
