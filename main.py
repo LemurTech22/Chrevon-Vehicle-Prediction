@@ -15,9 +15,10 @@ def main():
     cleaned_data = cleaner.get_cleaned_data()
 
     visualizer = DataVisualizer(cleaned_data)
-    visualizer.plot_data()
-    visualizer.visualize_histogram()
-    visualizer.specialized_histogram()
+    #visualizer.plot_data()
+    #visualizer.visualize_histogram()
+    #visualizer.specialized_histogram()
+    visualizer.specialized_boxplots()
 
 if __name__ == '__main__':
     main()

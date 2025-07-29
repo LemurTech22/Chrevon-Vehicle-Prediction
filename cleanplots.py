@@ -22,3 +22,21 @@ class DataVisualizer:
         plt.ylabel('Frequency')
         plt.show()
 
+    def specialized_boxplots(self):
+        sns.boxplot(x='Vehicle Category',y='Vehicle Population',data=self.df)
+        plt.title('Vehicle Category vs Population percentage')
+        plt.xlabel('Vehicle Category')
+        plt.ylabel('Population')
+        plt.show()
+
+        sns.boxplot(x='Vehicle Category',y='Model Year',data=self.df)
+        plt.title('Vehicle Category vs Population percentage')
+        plt.xlabel('Vehicle Category')
+        plt.ylabel('Population')
+        plt.show()
+
+        sns.boxplot(x='Vehicle Category',y='Vehicle Population', hue='Fuel Type',data=self.df)
+        plt.title('Vehicle Category vs Population percentage')
+        plt.xlabel('Vehicle Category')
+        plt.ylabel('Population')
+        plt.show()

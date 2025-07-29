@@ -27,9 +27,9 @@ class DataCleaner:
     def categorical_to_numerical(self):
         label_encoder = LabelEncoder()
 
-        self.df['Fuel Type'] = label_encoder.fit_transform(self.df['Fuel Type'])
-        fuel_type_mapping = dict(zip(label_encoder.classes_, label_encoder.transform(label_encoder.classes_)))
-        print(f"Fuel Type Mapping: {fuel_type_mapping}")
+        #self.df['Fuel Type'] = label_encoder.fit_transform(self.df['Fuel Type'])
+        #fuel_type_mapping = dict(zip(label_encoder.classes_, label_encoder.transform(label_encoder.classes_)))
+        #print(f"Fuel Type Mapping: {fuel_type_mapping}")
 
         self.df['Vehicle Category'] = label_encoder.fit_transform(self.df['Vehicle Category'])
         vehicle_category_mapping = dict(zip(label_encoder.classes_, label_encoder.transform(label_encoder.classes_)))
