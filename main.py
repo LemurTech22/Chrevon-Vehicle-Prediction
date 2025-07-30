@@ -20,13 +20,13 @@ def main():
     #visualizer.specialized_histogram()
     #visualizer.specialized_boxplots()
     #visualizer.distrubtion_plot()
-    visualizer.heatmap_plot()
+    #visualizer.heatmap_plot()
     
     transform = data_transformation(cleaned_data)
     transformed_data = transform.transformed_data()
     
     transformed_plots = DataVisualizer(transformed_data)
-    transformed_plots.heatmap_plot()
+    #transformed_plots.heatmap_plot()
 
     model_comparison = finding_best_model(transformed_data)
     model_comparison.Model()
