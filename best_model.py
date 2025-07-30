@@ -15,8 +15,11 @@ class finding_best_model:
         new_data = self.df.copy().drop('Vehicle Population', axis=1)
         prediction = self.s.predict_model(best, data=new_data)
 
-        self.s.save_model(best, 'best_pipeline')
-        print(best)
+        self.s.evaluate_model(best)
+        self.s.plot_model(best, plot='residuals')
+        self.s.plot_model(best, plot='feature')
+
+        #self.s.save_model(best, 'best_pipeline')
 
     def Model(self):
         self.finding_model()
