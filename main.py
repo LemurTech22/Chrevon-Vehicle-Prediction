@@ -1,15 +1,15 @@
 from plot import raw_visualizer
 from cleaning_data import DataCleaner
 from cleanplots import DataVisualizer
-
-
+from transformation import data_transformation
+from best_model import finding_best_model
 
 def main():
 
     raw_data = raw_visualizer('training.csv')
 
-    raw_data.plot_data()
-    raw_data.visualize_histogram()
+    #raw_data.plot_data()
+    #raw_data.visualize_histogram()
 
     cleaner = DataCleaner(raw_data.df)
     cleaned_data = cleaner.get_cleaned_data()
@@ -18,7 +18,17 @@ def main():
     #visualizer.plot_data()
     #visualizer.visualize_histogram()
     #visualizer.specialized_histogram()
-    visualizer.specialized_boxplots()
+    #visualizer.specialized_boxplots()
+    #visualizer.distrubtion_plot()
+    visualizer.heatmap_plot()
+    
+    transform = data_transformation(cleaned_data)
+    transformed_data = transform.transformed_data()
+    
+    transformed_plots = DataVisualizer(transformed_data)
+    transformed_plots.heatmap_plot()
 
+    model_comparison = finding_best_model(transformed_data)
+    model_comparison.Model()
 if __name__ == '__main__':
     main()
