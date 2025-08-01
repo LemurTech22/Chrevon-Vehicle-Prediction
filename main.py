@@ -3,7 +3,7 @@ from cleaning_data import DataCleaner
 from cleanplots import DataVisualizer
 from transformation import data_transformation
 from best_model import finding_best_model
-
+from model_creation import Model_Creation
 def main():
 
     raw_data = raw_visualizer('training.csv')
@@ -14,7 +14,7 @@ def main():
     cleaner = DataCleaner(raw_data.df)
     cleaned_data = cleaner.get_cleaned_data()
 
-    visualizer = DataVisualizer(cleaned_data)
+    #visualizer = DataVisualizer(cleaned_data)
     #visualizer.plot_data()
     #visualizer.visualize_histogram()
     #visualizer.specialized_histogram()
@@ -28,7 +28,11 @@ def main():
     transformed_plots = DataVisualizer(transformed_data)
     #transformed_plots.heatmap_plot()
 
-    model_comparison = finding_best_model(transformed_data)
-    model_comparison.Model()
+    #model_comparison = finding_best_model(transformed_data)
+    #model_comparison.Model()
+    
+    model = Model_Creation(transformed_data)
+    model.execute()
+    
 if __name__ == '__main__':
     main()
