@@ -4,6 +4,7 @@ from cleanplots import DataVisualizer
 from transformation import data_transformation
 from best_model import finding_best_model
 from model_creation import Model_Creation
+
 def main():
 
     raw_data = raw_visualizer('training.csv')
@@ -33,6 +34,13 @@ def main():
     
     model = Model_Creation(transformed_data)
     model.execute()
-    
+
 if __name__ == '__main__':
     main()
+
+    ##used from Chatgpt
+
+    """
+    models to research
+    Quantile Regression (via LightGBM or GradientBoostingRegressor)
+    """

@@ -48,21 +48,4 @@ class DataCleaner:
         self.replace_na()
         self.categorical_to_numerical()
         return self.df
-
-    '''
-
-    # Let's assume the column with vehicle types is 'vehicle_type' and the column with data is 'value_column'
-
-    # You can calculate the mean for each vehicle type
-    grouped_means = df.groupby('vehicle_type')['value_column'].mean()
-
-    # Replace NaN values in 'value_column' with the corresponding type's mean
-    def replace_with_group_mean(row):
-        if pd.isna(row['value_column']):
-            # Use the group mean for that vehicle type
-            return grouped_means[row['vehicle_type']]
-        return row['value_column']
-
-    # Apply the function to the DataFrame
-    df['value_column'] = df.apply(replace_with_group_mean, axis=1)
-    '''
+    

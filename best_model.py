@@ -14,7 +14,6 @@ class finding_best_model:
         self.s.evaluate_model(best)
         #self.s.plot_model(best, plot='residuals')
         #self.s.plot_model(best, plot='feature')
-
         #self.s.save_model(best, 'best_pipeline')
 
     def Model(self):
